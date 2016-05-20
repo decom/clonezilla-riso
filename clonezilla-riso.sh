@@ -27,7 +27,7 @@ function menu_principal(){
           )
 
     case $opcao in
-      1) ;;
+      1) menu_selecionar_particionamento;;
       2) ;;
       3) ;;
       4) ;;
@@ -40,15 +40,40 @@ function menu_principal(){
 }
 
 #------------------------------------------------------
-# Autor:
+# Autor: Raylander Fróis Lopes <raylanderlopes@hotmail.com>
 #
 #------------------------------------------------------
-#
+# Função que exibe os arquivos de particionamentos
+# disponíveis
 #------------------------------------------------------
-# Histórico:
-# v1.0 :
-#   -
+# Histórico: 
+# v1.0 2016-05-20, Raylander Fróis Lopes:
+#  -Versão inicial
 function menu_selecionar_particionamento(){
+
+local arquivos=$(ls /home/partimag/clonezilla-riso/particionamentos/)
+local count=1
+local entradas_menu=""
+
+for arquivo in $arquivos; do
+local entradas_menu="$entradas_menu $count $arquivo"
+local count=$(($count + 1))
+done
+  
+  while : ; do
+    local opcao=$(dialog --stdout			   \
+          --title "Clonezilla" 				   \
+          --ok-label "Confirmar" 			   \
+          --cancel-label "Cancelar" 			   \
+          --menu "Selecione o arquivo de particionamento:" \
+          0 0 0 					   \
+	  $entradas_menu
+	  )
+    if [ -z $opcao ]; then 
+       break
+    fi
+
+  done
 
 }
 
@@ -65,3 +90,4 @@ function menu_selecionar_particionamento(){
 #  - Chamada do menu principal do clonezilla-riso
 
 menu_principal;
+
