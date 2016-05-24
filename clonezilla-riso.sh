@@ -82,6 +82,20 @@ function menu_selecionar_particionamento(){
 
 }
 
+#------------------------------------------------------
+# Autor: Raylander Fróis Lopes <raylanderlopes@hotmail.com>
+#
+#------------------------------------------------------
+# 
+#------------------------------------------------------
+# Histórico:
+# v1.0
+#  
+
+function menu_aplicar_particionamento(){
+
+}
+
 
 #------------------------------------------------------
 # Autor: Alain André <alainandre@decom.cefetmg.br>
