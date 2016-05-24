@@ -82,6 +82,24 @@ function menu_selecionar_particionamento(){
 
 }
 
+#------------------------------------------------------
+# Autor: Alain André <alainandre@decom.cefetmg.br>
+#
+#------------------------------------------------------
+# Função de exibição de mensagens padrão com título do
+# sistema. Recebe como parâmetro a mensagem a ser exibida
+#------------------------------------------------------
+# Histórico:
+# v1.0 2016-05-18, Alain André:
+#  - Versão inicial da função de exibição de mensagens
+#  - Exibe uma msgbox com título do sistema e a mensagem.
+function mensagem(){
+  local mensagem="$1"
+  dialog                \
+  --title "$TITLE"      \
+  --msgbox "$mensagem"  \
+  0 0
+}
 
 #------------------------------------------------------
 # Autor: Alain André <alainandre@decom.cefetmg.br>
