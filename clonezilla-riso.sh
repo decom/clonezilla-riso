@@ -49,7 +49,43 @@ function menu_principal(){
 # 
 #   
 function menu_formatar_particoes(){
+  local particoes=$(blkid | cut -d':' -f1)
+  local dispositivosComRepetidos=$(echo $particoes | sed -e 's/[0-9]*//g')
+  local dispositivosUnicosSemDev=$(for dispositivo in $dispositivosComRepetidos; do echo $dispositivo; done | uniq | sed -e 's/\/dev\///g')
+  local dispositivosUSB=""
+  for dispositivo in $dispositivosUnicosSemDev
+  do 
+    local usb=$(readlink -f /sys/class/block/${dispositivo}/device | grep usb);   
+    if [ ! -z "$usb" ]; then 
+      local dispositivosUSB="$dispositivosUSB $dispositivo";   
+    fi
+  done
+  for dispositivo in $dispositivosUSB
+  do
+    local particoes=$(for particao in $particoes; do echo $particao; done | grep -v $dispositivo)
+  done
 
+  local entradas_menu=""
+  for particao in $particoes
+  do
+    local entradas_menu="$entradas_menu $particao on"
+  done
+  
+  while : ; do
+    local opcao=$(dialog --stdout \
+    --no-items \
+    --title "Menu Formatar Partições" \
+    --ok-label "Confirmar" \
+    --cancel-label "Cancelar" \
+    --checklist "Escolha as Partições:" \
+    0 0 0 \
+    $entradas_menu\
+    )
+    if [ -z $opcao ]; then
+       break
+    fi
+    for item in $opcao 
+  done
 }
 
 #------------------------------------------------------
