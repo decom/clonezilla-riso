@@ -55,7 +55,7 @@ function menu_formatar_particoes(){
   local dispositivosUSB=""
   for dispositivo in $dispositivosUnicosSemDev
   do 
-    local usb=$(readlink -f /sys/class/block/${dispositivo}/device | grep usb);   
+  	local usb=$(readlink -f /sys/class/block/${dispositivo}/device | grep usb);   
     if [ ! -z "$usb" ]; then 
       local dispositivosUSB="$dispositivosUSB $dispositivo";   
     fi
@@ -68,7 +68,7 @@ function menu_formatar_particoes(){
   local entradas_menu=""
   for particao in $particoes
   do
-    local entradas_menu="$entradas_menu $particao on"
+  	local entradas_menu="$entradas_menu $particao on"
   done
   
   while : ; do
@@ -82,11 +82,27 @@ function menu_formatar_particoes(){
     $entradas_menu\
     )
     if [ -z $opcao ]; then
-       break
+      break
     fi
-    for item in $opcao 
+    for item in $opcao
+    do
+	    tipo=$(blkid $item | sed 's/LABEL=//g' | cut -d'=' -f3 | sed 's/"//g')
+	    if [ $tipo -eq "ntfs" ]; then
+	      umount $item
+	      mkfs.ntfs -Fq $item
+	    fi
+	    if [ $tipo -eq "ext4" ]; then
+	      umount $item
+	      mkfs.ext4 -Fq $item
+	    fi
+	    if [ $tipo -eq "swap" ]; then
+	      umount $item
+	      mkswap $item
+	    fi
+	done    
   done
 }
+
 
 #------------------------------------------------------
 # Autor: Alain André <alainandre@decom.cefetmg.br>
