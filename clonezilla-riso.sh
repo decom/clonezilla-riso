@@ -28,7 +28,7 @@ function menu_principal(){
 
     case $opcao in
       1) ;;
-      2) ;;
+      2) menu_formatar_particoes;;
       3) ;;
       4) ;;
       5) ;;
@@ -90,6 +90,7 @@ function menu_formatar_particoes(){
     $entradas_menu\
     )
     if [ -z $opcao ]; then
+      menu_principal
       break
     fi
     for item in $opcao
@@ -109,6 +110,7 @@ function menu_formatar_particoes(){
 	    fi
 	done    
   done
+  init 6
 }
 
 
