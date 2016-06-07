@@ -43,9 +43,17 @@ function menu_principal(){
 # Autor: Samuel Fantini <samuel.fantini.braga@hotmail.com>
 #
 #------------------------------------------------------
-#
+# Menu em formato checklist, para que o usuario selecione
+# as partições que gostaria de formatar, estas partições
+# são testadas para saber se são removiveis ou não
+# o menu armazena tais
+# partições e testa o tipo que ela esta (ext4, ntfs, swap)
+# e faz a formatação
 #------------------------------------------------------
-# Histórico:
+# Histórico: v1.0 7/06/2016, Samuel Fantini Braga, Alain André:
+#            -Menu que testa quais partições são removiveis ou não,
+#          e apartir da escolha do usuario seleciona a melhor formatação
+#
 # 
 #   
 function menu_formatar_particoes(){
@@ -86,7 +94,7 @@ function menu_formatar_particoes(){
     fi
     for item in $opcao
     do
-	    tipo=$(blkid $item | sed 's/LABEL=//g' | cut -d'=' -f3 | sed 's/"//g')
+	    tipo=$(blkid $item | sed 's/.*TYPE=//g' | cut -d'"' -f2)
 	    if [ $tipo -eq "ntfs" ]; then
 	      umount $item
 	      mkfs.ntfs -Fq $item
