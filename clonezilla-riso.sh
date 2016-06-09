@@ -30,7 +30,7 @@ function menu_principal(){
       1) ;;
       2) menu_formatar_particoes;;
       3) ;;
-      4) ;;
+      4) nova_imagem_sistema_recuperacao;;
       5) ;;
       *) init 6;;
     esac
@@ -113,6 +113,67 @@ function menu_formatar_particoes(){
   init 6
 }
 
+#
+#
+#
+#
+#
+#
+
+function nova_imagem_sistema_recuperacao(){
+  local particoes=$(blkid | cut -d':' -f1)
+  local dispositivosComRepetidos=$(echo $particoes | sed -e 's/[0-9]*//g')
+  local dispositivosUnicosSemDev=$(for dispositivo in $dispositivosComRepetidos; do echo $dispositivo; done | uniq | sed -e 's/\/dev\///g')
+  local dispositivosUSB=""
+  for dispositivo in $dispositivosUnicosSemDev
+  do 
+  	local usb=$(readlink -f /sys/class/block/${dispositivo}/device | grep usb);   
+    if [ ! -z "$usb" ]; then 
+      local dispositivosUSB="$dispositivosUSB $dispositivo";   
+    fi
+  done
+  for dispositivo in $dispositivosUSB
+  do
+    local particoes=$(for particao in $particoes; do echo $particao; done | grep -v $dispositivo)
+  done
+
+  local entradas_menu=""
+  for particao in $particoes
+  do
+    fdisk -l | grep $particao | grep Linux
+    if [ $? -eq 0 ]; then
+         fdisk -l | grep $particao | grep Linux swap
+  	     if [ $? -eq 1 ]; then
+  	        local entradas_menu="$entradas_menu $particao on"
+  	     fi
+  	fi
+  done
+  
+  while : ; do
+    local opcao=$(dialog --stdout \
+    --no-items \
+    --title "Menu Formatar Partições" \
+    --ok-label "Confirmar" \
+    --cancel-label "Cancelar" \
+    --checklist "Escolha as Partições:" \
+    0 0 0 \
+    $entradas_menu\
+    )
+    if [ -z $opcao ]; then
+      menu_principal
+      break
+    fi
+    for item in $opcao
+    do
+	    umount /mnt
+	    mount $item /mnt 
+	    cd /mnt
+	    tar -cvf ${nome} * /home/partimag/clonezilla-riso/sistemas/
+	    umount /mnt
+	done    
+  done
+  init 6
+}
 
 #------------------------------------------------------
 # Autor: Alain André <alainandre@decom.cefetmg.br>
