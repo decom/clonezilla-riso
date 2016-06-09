@@ -56,17 +56,16 @@ function menu_principal(){
 #   - Modificação para exibição de título global
 function menu_selecionar_particionamento(){
 
-  local arquivos=$(ls /home/partimag/clonezilla-riso/particionamentos/)
-  local count=1
+  local arquivos=$(ls $DIR_PARTICIONAMENTO)
   local entradas_menu=""
 
   for arquivo in $arquivos; do
-    local entradas_menu="$entradas_menu $count $arquivo"
-    local count=$(($count + 1))
+    local entradas_menu="$entradas_menu $arquivo"
   done
 
   while : ; do
     local opcao=$(dialog --stdout			   \
+          --no-items                           \
           --title "$TITLE" 				   \
           --ok-label "Confirmar" 			   \
           --cancel-label "Cancelar" 			   \
@@ -75,6 +74,9 @@ function menu_selecionar_particionamento(){
 	  $entradas_menu
 	  )
     if [ -z $opcao ]; then 
+       break
+    else
+       menu_aplicar_particionamento $opcao
        break
     fi
 
@@ -106,7 +108,7 @@ function menu_aplicar_particionamento(){
       dispositivosUSB="$dispositivosUSB $dispositivo";   
     fi
   done
- 
+  discos_rigidos=$discos
   for dispositivo in $dispositivosUSB
   do
     discos_rigidos=$(for disco in $discos; do echo $disco; done | grep -v $dispositivo)
