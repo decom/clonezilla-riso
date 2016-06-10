@@ -30,8 +30,8 @@ function menu_principal(){
       1) ;;
       2) menu_formatar_particoes;;
       3) ;;
-      4) nova_imagem_sistema_recuperacao;;
-      5) ;;
+      4) ;;
+      5) nova_imagem_sistema_recuperacao;;
       *) init 6;;
     esac
 
@@ -90,7 +90,6 @@ function menu_formatar_particoes(){
     $entradas_menu\
     )
     if [ -z $opcao ]; then
-      menu_principal
       break
     fi
     for item in $opcao
@@ -110,7 +109,6 @@ function menu_formatar_particoes(){
 	    fi
 	done    
   done
-  init 6
 }
 
 #
@@ -140,39 +138,37 @@ function nova_imagem_sistema_recuperacao(){
   local entradas_menu=""
   for particao in $particoes
   do
-    fdisk -l | grep $particao | grep Linux
+    fdisk -l | grep $particao | grep Linux > /dev/null
     if [ $? -eq 0 ]; then
-         fdisk -l | grep $particao | grep Linux swap
+         fdisk -l | grep $particao | grep swap > /dev/null
   	     if [ $? -eq 1 ]; then
-  	        local entradas_menu="$entradas_menu $particao on"
+  	        local entradas_menu="$entradas_menu $particao $particao"
   	     fi
   	fi
   done
   
   while : ; do
     local opcao=$(dialog --stdout \
-    --no-items \
-    --title "Menu Formatar Partições" \
+    --no-tags \
+    --title "Menu Criar Nova Imagem do Sistema de Recuperação" \
     --ok-label "Confirmar" \
     --cancel-label "Cancelar" \
-    --checklist "Escolha as Partições:" \
+    --menu "Escolha a Partição:" \
     0 0 0 \
     $entradas_menu\
     )
     if [ -z $opcao ]; then
-      menu_principal
       break
     fi
     for item in $opcao
     do
 	    umount /mnt
-	    mount $item /mnt 
-	    cd /mnt
-	    tar -cvf ${nome} * /home/partimag/clonezilla-riso/sistemas/
+	    mount $item /mnt
+	    nome=$(dialog --stdout --inputbox 'Digite o Nome da Nova Imagem:' 0 0)     
+	    tar -cvf /home/partimag/clonezilla-riso/sistemas/${nome} /mnt *
 	    umount /mnt
 	done    
   done
-  init 6
 }
 
 #------------------------------------------------------
