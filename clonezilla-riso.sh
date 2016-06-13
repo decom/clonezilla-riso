@@ -111,12 +111,19 @@ function menu_formatar_particoes(){
   done
 }
 
+#------------------------------------------------------
+# Autor: Samuel Fantini <samuel.fantini.braga@hotmail.com>
 #
-#
-#
-#
-#
-#
+#------------------------------------------------------
+# Menu para criar imagem linux do sistema de recuepração,
+# o menu contem apenas partições do formato ext4 e que
+# fazem parte do Disco, o usuario tem que colar o nome da imagem
+# que sera salva no diretorio /home/partimag/clonezilla-riso/sistemas/
+#------------------------------------------------------
+# Histórico: v1.0 13/06/2016, Samuel Fantini Braga, Alain André:
+#            -Menu para criar imagem do sistema de recuperação que contem
+#           apenas partições do formato ext4 e que não são removiveis
+#          
 
 function nova_imagem_sistema_recuperacao(){
   local particoes=$(blkid | cut -d':' -f1)
@@ -162,9 +169,9 @@ function nova_imagem_sistema_recuperacao(){
     fi
     for item in $opcao
     do
+	    nome=$(dialog --stdout --inputbox 'Digite o Nome da Nova Imagem:' 0 0)     
 	    umount /mnt
 	    mount $item /mnt
-	    nome=$(dialog --stdout --inputbox 'Digite o Nome da Nova Imagem:' 0 0)     
 	    tar -cvf /home/partimag/clonezilla-riso/sistemas/${nome} /mnt *
 	    umount /mnt
 	done    
