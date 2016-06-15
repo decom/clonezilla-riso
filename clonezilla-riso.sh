@@ -32,7 +32,7 @@ function menu_principal(){
       1) menu_selecionar_particionamento;;
       2) ;;
       3) ;;
-      4) ;;
+      4) menu_tabela_particionamento;;
       5) ;;
       *) init 6;;
     esac
@@ -155,7 +155,60 @@ function menu_aplicar_particionamento(){
     fi
 done
 }
-
+#------------------------------------------------------
+# Autor: Raylander Fróis Lopes <raylanderlopes@hotmail.com>
+#
+#------------------------------------------------------
+# Função exibe os discos rigidos disponiveis e cria
+# a tabela de particionamento do disco.
+#------------------------------------------------------
+# Histórico:
+# v1.0 2016-06-09, Raylander Fróis Lopes:
+#  - Versao Inicial
+function menu_tabela_particionamento(){
+  discos=$(cat /proc/partitions | grep ".*[h,s]d[a-z]$" | sed -e 's/\ //g'| sed -e 's/[0-9]//g')
+  dispositivosUSB=""
+ 
+  for dispositivo in $discos
+  do
+    usb=$(readlink -f /sys/class/block/${dispositivo}/device | grep usb);   
+    if [ ! -z "$usb" ]; then
+      dispositivosUSB="$dispositivosUSB $dispositivo";   
+    fi
+  done
+  
+  local discos_rigidos=$discos
+  
+  for dispositivo in $dispositivosUSB
+  do
+    discos_rigidos=$(for disco in $discos; do echo $disco; done | grep -v $dispositivo)
+  done
+ 
+  local entradas_menu=""
+  for disco in $discos_rigidos
+  do
+  local entradas_menu="$entradas_menu /dev/$disco /dev/$disco"
+  done
+ 
+  while : ; do
+    opcao=$(dialog --stdout                 \
+    --no-tags                                 \
+    --title "Discos Rigidos"  \
+    --ok-label "Confirmar"                     \
+    --cancel-label "Cancelar"                 \
+    --menu "Escolha um Disco:"            \
+    0 0 0                                     \
+    $entradas_menu                            \
+    )
+    if [ -z $opcao ]; then
+        break
+    else
+    	 nome_tabela=$(dialog --stdout --inputbox 'Digite o nome para a tabela de particionamento:' 0 0)
+    	 sfdisk -d $opcao > $DIR_TABELA$nome_tabela
+    	 break
+    fi
+done
+}
 #------------------------------------------------------
 # Autor: Alain André <alainandre@decom.cefetmg.br>
 #
@@ -170,11 +223,14 @@ done
 #   - Criação de área para variáveis globais e definição
 #     da variável TITLE (título global para menus).
 # v1.2 2016-06-08, Raylander Frois Lopes
-#   - Criação da variável global DIR_PARTICIONAMENTO  
+#   - Criação da variável global DIR_PARTICIONAMENTO
+# v1.3 2016-06-09, Raylander Frois Lopes
+#   - Criação da variável global DIR_TABELA    
 
 # Variáveis Globais
 TITLE="Clonezilla-RISO - v1.0"
 DIR_PARTICIONAMENTO="/home/partimag/particionamento/"
+DIR_TABELA=" /home/partimag/clonezilla-riso/particionamentos/"
 # Chamada Principal do Sistema
 menu_principal;
 
