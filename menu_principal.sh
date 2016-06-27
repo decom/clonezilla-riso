@@ -20,7 +20,7 @@ function menu_principal(){
   source menu_selecionar_particionamento.sh
   source menu_formatar_particoes.sh
   source menu_tabela_particionamento.sh
-  source nova_imagem_sistema_recuperacao.sh
+  source menu_imagem_sistema.sh
   while : ; do
     local opcao=$(dialog --stdout                         \
           --title "$TITLE"                                \
@@ -32,7 +32,7 @@ function menu_principal(){
           2 "Formatar Partições"                          \
           3 "Instalar Sistema de Recuperação"             \
           4 "Criar Nova Tabela de Particionamento"        \
-          5 "Criar Nova Imagem do Sistema de Recuperação"
+          5 "Criar Nova Imagem do Sistema de Recuperação" \
           )
 
     case $opcao in
@@ -40,7 +40,7 @@ function menu_principal(){
       2) menu_formatar_particoes;;
       3) ;;
       4) menu_tabela_particionamento;;
-      5) nova_imagem_sistema_recuperacao;;
+      5) menu_imagem_sistema;;
       *) init 6;;
     esac
 
