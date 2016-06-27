@@ -38,7 +38,7 @@ function menu_principal(){
     case $opcao in
       1) menu_selecionar_particionamento;;
       2) menu_formatar_particoes;;
-      3) ;;
+      3) menu_instalar_sistema;;
       4) menu_tabela_particionamento;;
       5) menu_imagem_sistema;;
       *) init 6;;
