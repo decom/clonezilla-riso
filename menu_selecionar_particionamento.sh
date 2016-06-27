@@ -16,10 +16,9 @@
 #   - Modularização das funções
 #
 function menu_selecionar_particionamento(){
-  source $clonezilla_riso/carregar_discos.sh
-  source $clonezilla_riso/carregar_variaveis.sh 
+  source menu_aplicar_particionamento.sh
   
-  local arquivos=$(ls $DIR_PARTICIONAMENTO)
+  local arquivos=$(ls "${DIR_PARTICIONAMENTOS}")
   local entradas_menu=""
   for arquivo in $arquivos; do
     local entradas_menu="$entradas_menu $arquivo"
@@ -28,7 +27,7 @@ function menu_selecionar_particionamento(){
   while : ; do
     local opcao=$(dialog --stdout			                     \
           --no-items                                       \
-          --title "Menu Selecionar Particionamento" 				                         \
+          --title "Menu Selecionar Particionamento"        \
           --ok-label "Confirmar" 			                     \
           --cancel-label "Cancelar" 			                 \
           --menu "Selecione o arquivo de particionamento:" \
@@ -38,7 +37,7 @@ function menu_selecionar_particionamento(){
     if [ -z $opcao ]; then 
        break
     else
-       carregar_discos $opcao
+       menu_aplicar_particionamento $opcao
        break
     fi
   done

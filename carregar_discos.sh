@@ -11,26 +11,22 @@
 #   - Modularização das funções
 #
 function carregar_discos(){ 
-  source $clonezilla_riso/menu_aplicar_particionamento.sh
-  source $clonezilla_riso/carregar_variaveis.sh
-  
-  arquivo_particionamento=$DIR_PARTICIONAMENTO$1
- 
-  discos=$(cat /proc/partitions | grep ".*[h,s]d[a-z]$" | sed -e 's/\ //g'| sed -e 's/[0-9]//g')
-  dispositivosUSB=""
+
+  local discos=$(cat /proc/partitions | grep ".*[h,s]d[a-z]$" | sed -e 's/\ //g'| sed -e 's/[0-9]//g')
+  local dispositivos_usb=""
  
   for dispositivo in $discos
   do
-    usb=$(readlink -f /sys/class/block/${dispositivo}/device | grep usb);   
+    local usb=$(readlink -f /sys/class/block/${dispositivo}/device | grep usb)   
     if [ ! -z "$usb" ]; then
-      dispositivosUSB="$dispositivosUSB $dispositivo";   
+      local dispositivos_usb="$dispositivos_usb $dispositivo"   
     fi
   done
-  discos_rigidos=$discos
-  for dispositivo in $dispositivosUSB
+  
+  for dispositivo in $dispositivos_usb
   do
-    discos_rigidos=$(for disco in $discos; do echo $disco; done | grep -v $dispositivo)
+    local discos=$(echo $discos | sed -e "s/${dispositivo}//g")
   done
       
-  menu_aplicar_particionamento $discos_rigidos $arquivo_particionamento
+  echo $discos
 }

@@ -17,11 +17,10 @@
 #   - Modularização das funções
 
 function menu_principal(){
-  source $clonezilla_riso/menu_selecionar_particionamento.sh
-  source $clonezilla_riso/menu_formatar_particoes.sh
-  source $clonezilla_riso/menu_tabela_particionamento.sh
-  source $clonezilla_riso/nova_imagem_sistema_recuperacao.sh
-  source $clonezilla_riso/carregar_variaveis.sh
+  source menu_selecionar_particionamento.sh
+  source menu_formatar_particoes.sh
+  source menu_tabela_particionamento.sh
+  source nova_imagem_sistema_recuperacao.sh
   while : ; do
     local opcao=$(dialog --stdout                         \
           --title "$TITLE"                                \

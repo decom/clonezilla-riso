@@ -12,9 +12,12 @@
 #   - Modularização das funções
 #
 function menu_aplicar_particionamento(){
-  source $clonezilla_riso/carregar_variaveis.sh   
+  source carregar_discos.sh   
+  
+  local particionamento=$DIR_PARTICIONAMENTOS$1
+ 
   local entradas_menu=""
-  for disco in $1
+  for disco in $(carregar_discos)
   do
   	local entradas_menu="$entradas_menu /dev/$disco /dev/$disco"
   done
@@ -32,7 +35,7 @@ function menu_aplicar_particionamento(){
     if [ -z $opcao ]; then
         break
     else
-        sfdisk $opcao < $2
+        sfdisk $opcao < $particionamento
         break
     fi
   done
