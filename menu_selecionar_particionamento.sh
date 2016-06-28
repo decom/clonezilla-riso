@@ -14,11 +14,18 @@
 #   - Modificação para exibição de título global
 # v1.2 2016-06-23, Samuel Fantini:
 #   - Modularização das funções
-#
+# v1.3 2016-06-28, Raylander Fróis Lopes
+#   - Adição de mensagem de erro
 function menu_selecionar_particionamento(){
   source menu_aplicar_particionamento.sh
+  source menu_principal.sh
+  source mensagem.sh
   
   local arquivos=$(ls "${DIR_PARTICIONAMENTOS}")
+	if [ -z $arquivos ]; then 
+		mensagem "Diretorio vazio"
+		menu_principal
+	fi
   local entradas_menu=""
   for arquivo in $arquivos; do
     local entradas_menu="$entradas_menu $arquivo"
@@ -34,8 +41,9 @@ function menu_selecionar_particionamento(){
           0 0 0 					                                 \
 	  $entradas_menu
 	  )
-    if [ -z $opcao ]; then 
-       break
+    if [ -z $opcao ]; then
+    	mensagem "Nenhuma arquivo de particionamento selecionado" 
+      break
     else
        menu_aplicar_particionamento $opcao
        break
