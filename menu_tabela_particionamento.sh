@@ -18,6 +18,7 @@ function menu_tabela_particionamento(){
     $entradas_menu                            \
     )
     if [ -z $opcao ]; then
+        mensagem "Nenhum Disco selecionado" 
         break
     else
     	 nome_tabela=$(dialog --stdout --inputbox 'Digite o nome para a tabela de particionamento:' 0 0)

@@ -14,5 +14,11 @@ function carregar_particoes(){
   do
     local particoes=$(for particao in $particoes; do echo $particao; done | grep -v $dispositivo)
   done
+  
+  if [ -z $discos ]; then 
+	mensagem "Nenhuma Partição Encontrada"
+        break
+  fi
+  
   echo $particoes
 }

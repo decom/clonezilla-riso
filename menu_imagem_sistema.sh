@@ -13,6 +13,11 @@ function menu_imagem_sistema(){
   	fi
   done
   
+  if [ -z $entradas_menu ]; then 
+	mensagem "Nenhuma partição ext4 encontrada"
+	break
+  fi
+  
   while : ; do
     local opcao=$(dialog --stdout                               \
     --no-tags                                                   \
@@ -24,6 +29,7 @@ function menu_imagem_sistema(){
     $entradas_menu                                              \
     )
     if [ -z $opcao ]; then
+      mensagem "Nenhuma Partição selecionada" 
       break
     fi
     for item in $opcao

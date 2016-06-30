@@ -18,6 +18,7 @@ function menu_formatar_particoes(){
     $entradas_menu                      \
     )
     if [ -z $opcao ]; then
+      mensagem "Nenhuma Partição selecionado" 
       break
     fi
     for item in $opcao

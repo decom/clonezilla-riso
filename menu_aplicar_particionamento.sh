@@ -15,7 +15,7 @@ function menu_aplicar_particionamento(){
   source carregar_discos.sh   
   
   local particionamento=$DIR_PARTICIONAMENTOS$1
- 
+  
   local entradas_menu=""
   for disco in $(carregar_discos)
   do
@@ -33,6 +33,7 @@ function menu_aplicar_particionamento(){
     $entradas_menu                            \
     )
     if [ -z $opcao ]; then
+        mensagem "Nenhum Disco selecionado" 
         break
     else
         sfdisk $opcao < $particionamento
