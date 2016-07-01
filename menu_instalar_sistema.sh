@@ -10,6 +10,7 @@
 
 function menu_instalar_sistema (){
 	source carregar_particoes.sh
+  source mensagem.sh
     
   local arquivos=$(ls "${DIR_SISTEMAS}")
   

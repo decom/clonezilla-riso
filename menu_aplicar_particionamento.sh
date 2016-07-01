@@ -13,6 +13,7 @@
 #
 function menu_aplicar_particionamento(){
   source carregar_discos.sh   
+  source mensagem.sh
   
   local particionamento=$DIR_PARTICIONAMENTOS$1
   

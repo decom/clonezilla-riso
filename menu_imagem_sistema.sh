@@ -1,6 +1,6 @@
 function menu_imagem_sistema(){
   source carregar_particoes.sh
-
+  source mensagem.sh
   local entradas_menu=""
   
   if [ -z $(carregar_discos) ]; then 

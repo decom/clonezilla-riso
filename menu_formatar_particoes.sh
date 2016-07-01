@@ -1,6 +1,7 @@
 function menu_formatar_particoes(){
   source carregar_particoes.sh
-
+  source mensagem.sh
+  
   local entradas_menu=""
   
   if [ -z $(carregar_discos) ]; then 

@@ -1,6 +1,6 @@
 function menu_tabela_particionamento(){
   source carregar_discos.sh
-  
+  source mensagem.sh
   local entradas_menu=""
   
   if [ -z $(carregar_discos) ]; then 
