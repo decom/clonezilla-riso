@@ -2,6 +2,12 @@ function menu_imagem_sistema(){
   source carregar_particoes.sh
 
   local entradas_menu=""
+  
+  if [ -z $(carregar_discos) ]; then 
+      mensagem "Nenhum Disco encontrado"
+      return 1
+  fi
+  
   for particao in $(carregar_particoes)
   do
     fdisk -l 2> /dev/null | grep $particao | grep Linux  &> /dev/null
@@ -29,7 +35,6 @@ function menu_imagem_sistema(){
     $entradas_menu                                              \
     )
     if [ -z $opcao ]; then
-      mensagem "Nenhuma Partição selecionada" 
       break
     fi
     for item in $opcao

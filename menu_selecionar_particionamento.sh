@@ -24,7 +24,7 @@ function menu_selecionar_particionamento(){
   
   if [ -z $arquivos ]; then 
 	mensagem "Diretorio vazio"
-	break
+	return 1
   fi
   
   local entradas_menu=""
@@ -43,7 +43,6 @@ function menu_selecionar_particionamento(){
 	  $entradas_menu
 	  )
     if [ -z $opcao ]; then
-    	mensagem "Nenhuma arquivo de particionamento selecionado" 
       break
     else
        menu_aplicar_particionamento $opcao

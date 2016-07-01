@@ -15,7 +15,7 @@ function menu_instalar_sistema (){
   
   if [ -z $arquivos ]; then 
 	mensagem "Diretorio vazio"
-	break
+	return 1
   fi
   
   local entradas_menu=""
@@ -35,10 +35,15 @@ function menu_instalar_sistema (){
       		$entradas_menu
     )
   	if [ -z $opcao1 ]; then
-    	    mensagem "Nenhuma Imagem selecionada" 
     	    break
         else
             entradas_menu=""
+    	    
+    	     if [ -z $(carregar_discos) ]; then 
+	        mensagem "Nenhum Disco encontrado"
+                return 1
+            fi
+    	    
     	    for particao in $(carregar_particoes)
             do
                 fdisk -l 2> /dev/null | grep $particao | grep Linux  &> /dev/null
@@ -69,7 +74,6 @@ function menu_instalar_sistema (){
        )
        
        if [ -z $opcao2 ]; then
-	  mensagem "Nenhuma partição selecionada"
           break
        
        else
