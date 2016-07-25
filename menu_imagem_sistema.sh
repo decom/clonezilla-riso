@@ -1,7 +1,13 @@
 function menu_imagem_sistema(){
   source carregar_particoes.sh
-
+  source mensagem.sh
   local entradas_menu=""
+  
+  if [ -z $(carregar_discos) ]; then 
+      mensagem "Nenhum Disco encontrado"
+      return 1
+  fi
+  
   for particao in $(carregar_particoes)
   do
     fdisk -l 2> /dev/null | grep $particao | grep Linux  &> /dev/null
@@ -12,6 +18,11 @@ function menu_imagem_sistema(){
   	     fi
   	fi
   done
+  
+  if [ -z $entradas_menu ]; then 
+	mensagem "Nenhuma partição ext4 encontrada"
+	break
+  fi
   
   while : ; do
     local opcao=$(dialog --stdout                               \

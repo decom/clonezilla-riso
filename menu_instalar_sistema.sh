@@ -10,9 +10,16 @@
 
 function menu_instalar_sistema (){
 	source carregar_particoes.sh
+  source mensagem.sh
     
   local arquivos=$(ls "${DIR_SISTEMAS}")
- 	local entradas_menu=""
+  
+  if [ -z $arquivos ]; then 
+	mensagem "Diretorio vazio"
+	return 1
+  fi
+  
+  local entradas_menu=""
   for arquivo in $arquivos 
 	do
   	local entradas_menu="$entradas_menu $arquivo"
@@ -29,21 +36,33 @@ function menu_instalar_sistema (){
       		$entradas_menu
     )
   	if [ -z $opcao1 ]; then
-    	break
-    else
-      entradas_menu=""
-    	for particao in $(carregar_particoes)
-      do
-        fdisk -l 2> /dev/null | grep $particao | grep Linux  &> /dev/null
-        if [ $? -eq 0 ]; then
-        	fdisk -l 2> /dev/null | grep $particao | grep swap  &> /dev/null
-        	if [ $? -eq 1 ]; then
-            local entradas_menu="$entradas_menu $particao"
-          fi
+    	    break
+        else
+            entradas_menu=""
+    	    
+    	     if [ -z $(carregar_discos) ]; then 
+	        mensagem "Nenhum Disco encontrado"
+                return 1
+            fi
+    	    
+    	    for particao in $(carregar_particoes)
+            do
+                fdisk -l 2> /dev/null | grep $particao | grep Linux  &> /dev/null
+                if [ $? -eq 0 ]; then
+                    fdisk -l 2> /dev/null | grep $particao | grep swap  &> /dev/null
+        	    if [ $? -eq 1 ]; then
+                        local entradas_menu="$entradas_menu $particao"
+                    fi
+                fi
+            done
         fi
-      done
-    fi
    done 
+   
+   if [ -z $entradas_menu ]; then 
+	mensagem "Nenhuma partição ext4 encontrada"
+	break
+   fi
+     
      while : ; do
        local opcao2=$(dialog --stdout                               \
        --no-items                                                  \
@@ -54,8 +73,10 @@ function menu_instalar_sistema (){
        0 0 0                                                       \
        $entradas_menu                                              \
        )
+       
        if [ -z $opcao2 ]; then
-         break
+          break
+       
        else
          umount $opcao2 2> /dev/null
          mkfs.ext4 -qF $opcao2

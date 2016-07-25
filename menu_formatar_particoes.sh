@@ -1,7 +1,14 @@
 function menu_formatar_particoes(){
   source carregar_particoes.sh
-
+  source mensagem.sh
+  
   local entradas_menu=""
+  
+  if [ -z $(carregar_discos) ]; then 
+	mensagem "Nenhuma Partição Encontrada"
+        break
+  fi
+  
   for particao in $(carregar_particoes)
   do
   	local entradas_menu="$entradas_menu $particao on"
@@ -18,6 +25,7 @@ function menu_formatar_particoes(){
     $entradas_menu                      \
     )
     if [ -z $opcao ]; then
+      mensagem "Nenhuma Partição selecionado" 
       break
     fi
     for item in $opcao

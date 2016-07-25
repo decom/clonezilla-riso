@@ -1,7 +1,7 @@
 function carregar_particoes(){
   local particoes=$(blkid | cut -d':' -f1)
-  local dispositivosComRepetidos=$(echo $particoes | sed -e 's/[0-9]*//g')
-  local dispositivosUnicosSemDev=$(for dispositivo in $dispositivos_com_repetidos; do echo $dispositivo; done | uniq | sed -e 's/\/dev\///g')
+  local dispositivos_com_repetidos=$(echo $particoes | sed -e 's/[0-9]*//g')
+  local dispositivos_unicos_sem_dev=$(for dispositivo in $dispositivos_com_repetidos; do echo $dispositivo; done | uniq | sed -e 's/\/dev\///g')
   local dispositivosUSB=""
   for dispositivo in $dispositivos_unicos_sem_dev
   do 
@@ -14,5 +14,6 @@ function carregar_particoes(){
   do
     local particoes=$(for particao in $particoes; do echo $particao; done | grep -v $dispositivo)
   done
+  
   echo $particoes
 }

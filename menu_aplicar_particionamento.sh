@@ -13,10 +13,17 @@
 #
 function menu_aplicar_particionamento(){
   source carregar_discos.sh   
+  source mensagem.sh
   
   local particionamento=$DIR_PARTICIONAMENTOS$1
- 
+  
   local entradas_menu=""
+  
+  if [ -z $(carregar_discos) ]; then 
+	mensagem "Nenhum Disco encontrado"
+        return 1
+  fi
+  
   for disco in $(carregar_discos)
   do
   	local entradas_menu="$entradas_menu /dev/$disco /dev/$disco"
@@ -36,6 +43,11 @@ function menu_aplicar_particionamento(){
         break
     else
         sfdisk $opcao < $particionamento
+        if [ $? -eq 0 ]; then 
+	        mensagem "Particionamento aplicado"
+	      else
+	        mensagem "Particionamento não aplicado"
+        fi
         break
     fi
   done

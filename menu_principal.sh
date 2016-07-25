@@ -21,6 +21,7 @@ function menu_principal(){
   source menu_formatar_particoes.sh
   source menu_tabela_particionamento.sh
   source menu_imagem_sistema.sh
+  source menu_instalar_sistema.sh
   while : ; do
     local opcao=$(dialog --stdout                         \
           --title "$TITLE"                                \
