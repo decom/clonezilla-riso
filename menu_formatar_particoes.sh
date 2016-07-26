@@ -6,7 +6,7 @@ function menu_formatar_particoes(){
   
   if [ -z $(carregar_discos) ]; then 
 	mensagem "Nenhuma Partição Encontrada"
-        break
+        return 1
   fi
   
   for particao in $(carregar_particoes)
@@ -26,7 +26,7 @@ function menu_formatar_particoes(){
     )
     if [ -z $opcao ]; then
       mensagem "Nenhuma Partição selecionado" 
-      break
+     break
     fi
     for item in $opcao
     do
@@ -43,11 +43,6 @@ function menu_formatar_particoes(){
 	      umount $item
 	      mkswap $item
 	    fi
-		done
-		if [ $? -eq 0]; then
-      mensagem "Formatado com sucesso" 
-		else
-			mensagem "Formatado sem sucesso"
-    fi
-  done
+     done
+done
 }
