@@ -43,6 +43,11 @@ function menu_formatar_particoes(){
 	      umount $item
 	      mkswap $item
 	    fi
-	   done    
+		done
+		if [ $? -eq 0]; then
+      mensagem "Formatado com sucesso" 
+		else
+			mensagem "Formatado sem sucesso"
+    fi
   done
 }
