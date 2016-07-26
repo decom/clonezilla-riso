@@ -1,0 +1,8 @@
+#!/bin/bash
+
+	dialog --title ' ' --msgbox 'Clonezilla-riso' 0 0
+	cd ..	
+	usb=$(df | grep /dev/sd | cut -d'1' -f1)
+	sudo mount ${usb}2 /media/
+	cd /media/	
+	bash clonezilla-riso.sh
