@@ -15,9 +15,9 @@
 # v1.3 2016-06-28, Raylander Fróis Lopes
 #   - Correção de erro
 function mensagem(){
-  local mensagem="$1"
-  dialog                \
-  --title "$TITLE"      \
-  --msgbox "$mensagem"  \
-  0 0
+	local mensagem="$1"
+	dialog                \
+  	--title "$TITLE"      \
+  	--msgbox "$mensagem"  \
+  	0 0
 }

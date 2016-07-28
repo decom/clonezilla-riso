@@ -1,6 +1,7 @@
 #!/bin/bash 
 # Autor: Raylander Fróis Lopes <raylanderlopes@hotmail.com>
-#		 Samuel Fantini Braga <samuel.fantini.braga@hotmail.com>
+#        Alain André <alainandre@decom.cefetmg.br>
+#	 	 Samuel Fantini Bra <samuel.fantini.braga@hotmail.com>
 #
 #------------------------------------------------------
 # Função para carregar informações dos Discos no
@@ -12,20 +13,20 @@
 #
 function carregar_discos(){ 
 
-  local discos=$(cat /proc/partitions | grep ".*[h,s]d[a-z]$" | sed -e 's/\ //g'| sed -e 's/[0-9]//g')
-  local dispositivos_usb=""
+	local discos=$(cat /proc/partitions | grep ".*[h,s]d[a-z]$" | sed -e 's/ //g'| sed -e 's/[0-9]//g')
+  	local dispositivos_usb=""
   
-  for dispositivo in $discos
-  do
-    local usb=$(readlink -f /sys/class/block/${dispositivo}/device | grep usb)   
-    if [ ! -z "$usb" ]; then
-      local dispositivos_usb="$dispositivos_usb $dispositivo"   
-    fi
-  done
+  	for dispositivo in $discos
+  	do
+     	local usb=$(readlink -f /sys/class/block/${dispositivo}/device | grep usb)   
+    	if [ ! -z "$usb" ]; then
+       		local dispositivos_usb="$dispositivos_usb $dispositivo"   
+    	fi
+  	done
   
-  for dispositivo in $dispositivos_usb
-  do
-    local discos=$(echo $discos | sed -e "s/${dispositivo}//g")
-  done
-  echo $discos
+  	for dispositivo in $dispositivos_usb
+  	do
+     	local discos=$(echo $discos | sed -e "s/${dispositivo}//g")
+  	done
+  	echo $discos
 }

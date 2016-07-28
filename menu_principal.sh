@@ -17,34 +17,35 @@
 #   - Modularização das funções
 
 function menu_principal(){
-  source menu_selecionar_particionamento.sh
-  source menu_formatar_particoes.sh
-  source menu_tabela_particionamento.sh
-  source menu_imagem_sistema.sh
-  source menu_instalar_sistema.sh
-  while : ; do
-    local opcao=$(dialog --stdout                         \
-          --title "$TITLE"                                \
-          --ok-label "Confirmar"                          \
-          --cancel-label "Sair"                           \
-          --menu "Escolha o que você deseja fazer:"       \
-          0 0 0                                           \
-          1 "Aplicar Nova Tabela de Particionamento"      \
-          2 "Formatar Partições"                          \
-          3 "Instalar Sistema de Recuperação"             \
-          4 "Criar Nova Tabela de Particionamento"        \
-          5 "Criar Nova Imagem do Sistema de Recuperação" \
-          )
+	source menu_selecionar_particionamento.sh
+  	source menu_formatar_particoes.sh
+  	source menu_tabela_particionamento.sh
+  	source menu_imagem_sistema.sh
+  	source menu_instalar_sistema.sh
+	source menu_selecionar_imagem.sh
+  	while : ; do
+    	local opcao=$(dialog --stdout                       \
+          	--title "$TITLE"                                \
+          	--ok-label "Confirmar"                          \
+          	--cancel-label "Sair"                           \
+          	--menu "Escolha o que você deseja fazer:"       \
+          	0 0 0                                           \
+          	1 "Aplicar Nova Tabela de Particionamento"      \
+          	2 "Formatar Partições"                          \
+          	3 "Instalar Sistema de Recuperação"             \
+          	4 "Criar Nova Tabela de Particionamento"        \
+          	5 "Criar Nova Imagem do Sistema de Recuperação" \
+          	)
 
-    case $opcao in
-      1) menu_selecionar_particionamento;;
-      2) menu_formatar_particoes;;
-      3) menu_instalar_sistema;;
-      4) menu_tabela_particionamento;;
-      5) menu_imagem_sistema;;
-      *) init 6;;
-    esac
+    	case $opcao in
+      	1) menu_selecionar_particionamento;;
+      	2) menu_formatar_particoes;;
+      	3) menu_selecionar_imagem;;
+      	4) menu_tabela_particionamento;;
+      	5) menu_imagem_sistema;;
+      	*) init 6;;
+    	esac
 
-  done
-  init 6
+	done
+  	init 6
 }

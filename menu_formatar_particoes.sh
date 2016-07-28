@@ -1,4 +1,23 @@
+#!/bin/bash
+#------------------------------------------------------
+# Autor: Raylander Fróis Lopes <raylanderlopes@hotmail.com>
+#        Alain André <alainandre@decom.cefetmg.br>
+#		 Samuel Fantini Bra <samuel.fantini.braga@hotmail.com>
+#
+#------------------------------------------------------
+# Função que exibe exibe as partições para que sejam formatadas
+#------------------------------------------------------
+# Histórico:
+# v1.0 2016-05-20, Samuel Fantini:
+#  -Versão inicial
+# v1.1 2016-05-23, Alain André:
+#   - Modificação para exibição de título global
+# v1.2 2016-06-23, Samuel Fantini:
+#   - Modularização das funções
+# v1.3 2016-06-28, Raylander Fróis Lopes
+#   - Adição de mensagem de erro
 function menu_formatar_particoes(){
+  source carregar_discos.sh
   source carregar_particoes.sh
   source mensagem.sh
   
@@ -25,8 +44,7 @@ function menu_formatar_particoes(){
     $entradas_menu                      \
     )
     if [ -z $opcao ]; then
-      mensagem "Nenhuma Partição selecionado" 
-     break
+    	break
     fi
     for item in $opcao
     do
@@ -37,12 +55,17 @@ function menu_formatar_particoes(){
 	    fi
 	    if [ $tipo -eq "ext4" ]; then
 	      umount $item
-	      mkfs.ext4 -Fq $item
+		mkfs.ext4 -Fq -O ^metadata_csum -U `cut -d '"' -f2 recoveryUUID` $item	      
 	    fi
 	    if [ $tipo -eq "swap" ]; then
 	      umount $item
-	      mkswap $item
+	      mkswap -U `cut -d '"' -f2 swapUUID` $item
 	    fi
-     done
-done
+	done
+	if [ $? -eq 0 ]; then 
+		mensagem "Formatação bem sucedida"
+	else
+		mensagem "Formatação mal sucedida"
+	fi
+  done
 }

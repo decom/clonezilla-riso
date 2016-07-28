@@ -1,5 +1,7 @@
 #!/bin/bash
 # Autor: Raylander Fróis Lopes <raylanderlopes@hotmail.com>
+#        Alain André <alainandre@decom.cefetmg.br>
+#	 	 Samuel Fantini Bra <samuel.fantini.braga@hotmail.com>
 #
 #------------------------------------------------------
 # Função para aplicar a tabela de particionamento ao
@@ -12,43 +14,42 @@
 #   - Modularização das funções
 #
 function menu_aplicar_particionamento(){
-  source carregar_discos.sh   
-  source mensagem.sh
+  	source carregar_discos.sh   
+  	source mensagem.sh
   
-  local particionamento=$DIR_PARTICIONAMENTOS$1
+  	local particionamento=$DIR_PARTICIONAMENTOS$1
   
-  local entradas_menu=""
+  	local entradas_menu=""
   
-  if [ -z $(carregar_discos) ]; then 
-	mensagem "Nenhum Disco encontrado"
+  	if [ -z $(carregar_discos) ]; then 
+		mensagem "Nenhum Disco encontrado"
         return 1
-  fi
+  	fi
   
-  for disco in $(carregar_discos)
-  do
-  	local entradas_menu="$entradas_menu /dev/$disco /dev/$disco"
-  done
+  	for disco in $(carregar_discos)
+  	do
+  		local entradas_menu="$entradas_menu /dev/$disco /dev/$disco"
+  	done
   
-  while : ; do
-    opcao=$(dialog --stdout                   \
-    --no-tags                                 \
-    --title "Menu aplicar particionamento"    \
-    --ok-label "Confirmar"                    \
-    --cancel-label "Cancelar"                 \
-    --menu "Escolha um Disco:"                \
-    0 0 0                                     \
-    $entradas_menu                            \
-    )
-    if [ -z $opcao ]; then
-        break
-    else
-        sfdisk $opcao < $particionamento
-        if [ $? -eq 0 ]; then 
-	        mensagem "Particionamento aplicado"
-	      else
-	        mensagem "Particionamento não aplicado"
-        fi
-        break
-    fi
+  	while : ; do
+    	opcao=$(dialog --stdout                   \
+    	--no-tags                                 \
+    	--title "Menu aplicar particionamento"    \
+    	--ok-label "Confirmar"                    \
+    	--cancel-label "Cancelar"                 \
+   	 	--menu "Escolha um Disco:"                \
+    	0 0 0                                     \
+    	$entradas_menu                            \
+    	)
+    	if [ -z $opcao ]; then
+        	break
+    	else
+        	sfdisk $opcao < $particionamento
+        	if [ $? -eq 0 ]; then 
+				mensagem "Particionamento aplicado"
+			else
+	        	mensagem "Particionamento não aplicado"
+        	fi
+    	fi
   done
 }
