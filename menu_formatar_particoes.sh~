@@ -55,7 +55,7 @@ function menu_formatar_particoes(){
 	    fi
 	    if [ $tipo -eq "ext4" ]; then
 	      umount $item
-		mkfs.ext4 -Fq $item	      
+		mkfs.ext4 -Fq -O ^metadata_csum -U `cut -d '"' -f2 recoveryUUID` $item	      
 	    fi
 	    if [ $tipo -eq "swap" ]; then
 	      umount $item
