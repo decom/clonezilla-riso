@@ -64,11 +64,11 @@ function menu_instalar_sistema (){
 			mount $opcao2 /mnt
 			cd /mnt
 			tar -xf ${DIR_SISTEMAS}$1 -C /mnt
-			if [ $? -eq 0 ]; then 
+			if [ $? -eq 0 ]; then
 				mensagem "Instalado com sucesso"
 			else
-	        	mensagem "Instalado sem sucesso"
-        	fi
+	        		mensagem "Instalado sem sucesso"
+        		fi
 			rm -Rf lost+found/
 			cp -R $FILES/* /mnt
 			cd ..

@@ -43,29 +43,41 @@ function menu_formatar_particoes(){
     0 0 0                               \
     $entradas_menu                      \
     )
-    if [ -z $opcao ]; then
+    if [ -z "${opcao}" ]; then
     	break
     fi
-    for item in $opcao
+    
+	error=""
+	for item in $opcao
     do
 	    tipo=$(blkid $item | sed 's/.*TYPE=//g' | cut -d'"' -f2)
-	    if [ $tipo -eq "ntfs" ]; then
-	      umount $item
-	      mkfs.ntfs -Fq $item
-	    fi
-	    if [ $tipo -eq "ext4" ]; then
-	      umount $item
-		mkfs.ext4 -Fq $item	      
-	    fi
-	    if [ $tipo -eq "swap" ]; then
-	      umount $item
-	      mkswap -U `cut -d '"' -f2 swapUUID` $item
-	    fi
+		if [ $tipo = "ntfs" ];then						
+			umount $item
+			mkfs.ntfs -f $item
+			if [ $? -eq 1 ];then
+				error="$error $item"
+			fi
+		fi
+	 	if [ $tipo = "ext4" ];then						
+			umount $item
+			mkfs.ext4 -Fq $item
+			if [ $? -eq 1 ];then
+				error="$error $item"
+			fi
+		fi  
+		if [ $tipo = "swap" ];then						
+			umount $item
+			mkswap -U `cut -d '"' -f2 swapUUID` $item
+			if [ $? -eq 1 ];then
+				error="$error $item"
+			fi
+
+	   fi
 	done
-	if [ $? -eq 0 ]; then 
-		mensagem "Formatação bem sucedida"
+	if [ ! $error = "" ];then
+		mensagem "Partições não formatadas: "${error}""
 	else
-		mensagem "Formatação mal sucedida"
+		mensagem "Partições formatadas com sucesso"
 	fi
   done
 }

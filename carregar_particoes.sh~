@@ -15,9 +15,7 @@
 # v1.3 2016-06-28, Raylander Fróis Lopes
 #   - Correção de erro
 function carregar_particoes(){
-    local particoes=$(cat /proc/partitions | grep ".*[h,s]d[a-z][0-9]$" | sed -e 's/8  //g' | sed 's/.* //g')
-	local dispositivos_com_repetidos=$(echo $particoes | sed -e 's/[0-9]*//g')
-  	local dispositivos_unicos_sem_dev=$(for dispositivo in $dispositivos_com_repetidos; do echo $dispositivo; done | uniq | sed -e 's/\/dev\///g')
+    local dispositivos_unicos_sem_dev=$(cat /proc/partitions | grep ".*[h,s]d[a-z][0-9]$" | sed -e 's/8  //g' | sed 's/.* //g')
   	local dispositivosUSB=""
   	for dispositivo in $dispositivos_unicos_sem_dev
   	do 
