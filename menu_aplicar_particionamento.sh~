@@ -47,10 +47,8 @@ function menu_aplicar_particionamento(){
         	sfdisk $opcao < $particionamento
         	if [ $? -eq 0 ]; then 
 				mensagem "Particionamento aplicado"
-				return 0
 			else
 	        	mensagem "Particionamento não aplicado"
-				return 1
         	fi
     	fi
   done

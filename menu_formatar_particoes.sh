@@ -76,8 +76,10 @@ function menu_formatar_particoes(){
 	done
 	if [ ! $error = "" ];then
 		mensagem "Partições não formatadas: "${error}""
+		return 1
 	else
 		mensagem "Partições formatadas com sucesso"
+		return 0
 	fi
   done
 }
