@@ -60,7 +60,7 @@ function menu_formatar_particoes(){
 		fi
 	 	if [ $tipo = "ext4" ];then						
 			umount $item
-			mkfs.ext4 -Fq $item
+			mkfs.ext4 -Fq -O ^metadata_csum $item
 			if [ $? -eq 1 ];then
 				error="$error $item"
 			fi
