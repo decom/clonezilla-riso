@@ -4,4 +4,4 @@
 	usb=$(df | grep /dev/sd | cut -d'1' -f1)
 	sudo mount ${usb}2 /media/
 	cd /media/clonezilla-riso/	
-	sudo su -c "bash clonezilla-riso.sh"sh
+	sudo su -c "bash clonezilla-riso.sh"
