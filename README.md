@@ -68,25 +68,14 @@ Seu HD foi montado. Agora é preciso entrar no endereço "/mnt" e procurar a pas
 ```
 $ cp clonezilla-script.sh /home/partimag
 ```
-- Execute o seguinte comando e será gerado um arquivo zip modificado com adição de seu script "clonezilla-riso.sh, e será salvo na segunda partição de seu pendrive.
+- Execute o seguinte comando e será gerado um arquivo zip modificado com adição de seu script "custom-ocs", e será salvo na segunda partição de seu pendrive.
 ```
 $ cd /home/partimag
-$ ocs-live-dev -g en_US.UTF-8 -k NONE -s -c -m ./clonezilla-riso.sh
+$ ocs-live-dev -g en_US.UTF-8 -k NONE -s -c -m ./custom-ocs
 ```
 - Agora é somente seguir o "Manual de criação do pendrive bootável do Clonezilla", substituindo o arquivo zip a ser baixado pelo novo zip gerado e salvo na segunda partição USB.
 
-- Em seguida vamos abrir o diretorio onde esta salvo o arquivo que sera executado quando o pendrive for botado, com o seguinte comando:
+- Agora copie a pasta clonezilla-riso para /home/partimag com o seguinte comando
 ```
-$ cd /media/usb/pkg
+$ cp clonezilla-riso/clonezilla-riso/* /home/partimag
 ```
-- Abra o arquivo custom-ocs e modifique ele para que fique da seguinte forma:
-```
-#!/bin/bash	
-	$ cd ..	
-	$ usb=$(df | grep /dev/sd | cut -d'1' -f1)
-	$ sudo mount ${usb}2 /media/
-	$ cd /media/clonezilla-riso/
-	$ sudo su -c "bash clonezilla-riso.sh"
-```
-
-- Agora salve todos os seus codigos do seu programa em /home/partimag, onde esta montado o seu /dev/sdb2.
