@@ -75,12 +75,13 @@ $ ocs-live-dev -g en_US.UTF-8 -k NONE -s -c -m ./clonezilla-riso.sh
 ```
 - Agora é somente seguir o "Manual de criação do pendrive bootável do Clonezilla", substituindo o arquivo zip a ser baixado pelo novo zip gerado e salvo na segunda partição USB.
 
-- Em seguida vamos abrir o diretorio onde esta salvo o arquivo que sera executado quando o pendrive for botado com o seguinte comando:
+- Em seguida vamos abrir o diretorio onde esta salvo o arquivo que sera executado quando o pendrive for botado, com o seguinte comando:
 ```
 $ cd /media/usb/pkg
 ```
-- Abra o arquivo custom-ocs e modifiqueo para que fique da seguinte forma, não se esqueça do "#!/bin/bash":
+- Abra o arquivo custom-ocs e modifique ele para que fique da seguinte forma:
 ```
+#!/bin/bash	
 	$ cd ..	
 	$ usb=$(df | grep /dev/sd | cut -d'1' -f1)
 	$ sudo mount ${usb}2 /media/
@@ -88,4 +89,4 @@ $ cd /media/usb/pkg
 	$ sudo su -c "bash clonezilla-riso.sh"
 ```
 
-- Agora salve todos os seus codigos do seu programa em /home/partimag, em esta montado o seu /dev/sdb2.
+- Agora salve todos os seus codigos do seu programa em /home/partimag, onde esta montado o seu /dev/sdb2.
