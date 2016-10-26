@@ -1,0 +1,13 @@
+			<!-- Nav -->
+			<div>
+			<nav id="navManual"> 
+			  <ul>
+			    {% for post in site.posts %}
+			      <li>
+			        <a id="{{ post.seletor }}"  href="{{ post.url }}"><span>{{ post.title }}</span></a>
+			      </li>
+			    {% endfor %}
+			  </ul>			  
+			</nav>
+			</div>
+			<a href="#navManual"><div id="treeManual" ><span>&#9776;</span></div></a>

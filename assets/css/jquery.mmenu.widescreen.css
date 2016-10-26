@@ -1,0 +1,28 @@
+body{
+	position:relative
+}
+#mm-blocker{
+	display:none!important
+}
+
+.mm-page{
+	background:inherit;
+	box-sizing:border-box
+}
+.mm-menu.mm-widescreen{
+	border-right-width:1px;
+	border-right-style:solid;
+	display:block!important;
+	width:15%!important;
+	min-width:none!important;
+	max-width:none!important;
+	top:0!important;
+	bottom:0!important;
+	z-index:100!important;
+	-webkit-transform:none!important;
+	-ms-transform:none!important;
+	transform:none!important}
+.mm-menu.mm-widescreen.mm-pageshadow:after{
+	content:none;
+	display:none
+}
