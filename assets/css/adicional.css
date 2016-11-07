@@ -235,7 +235,7 @@ table ,td , tr , section{
     } 
 #formatacao {
     width: 115px;
-    background-image: url("/clonezilla-riso/images/formata2.png");
+    background-image: url("clonezilla-riso/images/formata2.png");
     background-size:  110px 105px;
     background-repeat: no-repeat;    
 }
