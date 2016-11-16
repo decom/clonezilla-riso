@@ -18,7 +18,7 @@ html, body {height:100%;}
 
     padding: 0px 0px 10px 10px;
     background-color: #97C8C4; /*#97C8C4 #030246 ;*/
-    background-image: url('/clonezilla-riso/images/fundo-azul7.jpg');
+    background-image: url('/images/fundo-azul7.jpg');
     background-repeat: no-repeat;
     background-position: center;
     min-height: 500px;
@@ -163,7 +163,7 @@ html, body {height:100%;}
 #formata td{
     vertical-align: top;
     text-align: left;
-    padding: 0px 5px 0px 0px;
+    padding: 0px 5px 5px 0px; /* configura espaçamento entre posts tela principal*/ 
     color: #d9e6f2;  
     font-size:14px; 
 
@@ -183,8 +183,6 @@ table ,td , tr , section{
     margin: 0px; 
 
 }
-
-  
 
 #adicional{
 
@@ -225,50 +223,88 @@ table ,td , tr , section{
 }
 
 
-.postes {        
-    line-height: 1.3em;
-    background-color: rgba(0, 7, 8, 0.5);
-    background: rgba(0, 7, 8, 0.5);
-    color: rgba(0, 7, 8, 0.5);
-    border-radius: 25px;
-    padding: 15px 0px 0px 10px;
-    } 
-#formatacao {
-    width: 115px;
-    background-image: url("/clonezilla-riso/images/formata2.png");
-    background-size:  110px 105px;
-    background-repeat: no-repeat;    
-}
-#particionar {
-    width: 115px;
-    background-image: url("/clonezilla-riso/images/particionar2.png");
-    background-size:  110px 91px;
-    background-repeat: no-repeat;    
-}
-#restaurar {
-    width: 115px;
-    background-image: url("/clonezilla-riso/images/restauracao1.png");
-    background-size:  110px 98px;
-    background-repeat: no-repeat;    
-}
+    .postes {        
+        line-height: 1.3em;
+        background-color: rgba(0, 7, 8, 0.5);
+        background: rgba(0, 7, 8, 0.5);
+        color: rgba(0, 7, 8, 0.5);
+        border-radius: 25px;
+        padding: 15px 0px 0px 10px;
+        } 
+    #formatacao {
+        width: 115px;
+        background-image: url("/images/formata2.png");
+        background-size:  110px 105px;
+        background-repeat: no-repeat;    
+    }
+    #particionar {
+        width: 115px;
+        background-image: url("/images/particionar2.png");
+        background-size:  110px 91px;
+        background-repeat: no-repeat;    
+    }
+    #restaurar {
+        width: 115px;
+        background-image: url("/images/restauracao1.png");
+        background-size:  110px 98px;
+        background-repeat: no-repeat;    
+    }
+
+    #pendriveBootavel {
+        width: 95px;
+        background-image: url("/images/pendrive.png");
+        background-size:  110px 90px;
+        background-repeat: no-repeat;    
+    }
+    #particionamento {
+        width: 95px;
+        background-image: url("/images/particionamento.png");
+        background-size:  110px 90px;
+        background-repeat: no-repeat;    
+    }
+    #recuperacao {
+        width: 95px;
+        background-image: url("/images/recuperacao.png");
+        background-size:  110px 90px;
+        background-repeat: no-repeat;    
+    }
 
 @media screen and (min-width: 961px) and (max-width: 1620px) {
     #formatacao {
         width: 85px;
-        background-image: url("/clonezilla-riso/images/formata2.png");
+        background-image: url("/images/formata2.png");
         background-size:  80px 75px;
         background-repeat: no-repeat;    
     }
     #particionar {
         width: 95px;
-        background-image: url("/clonezilla-riso/images/particionar2.png");
+        background-image: url("/images/particionar2.png");
         background-size:  90px 71px;
         background-repeat: no-repeat;    
     }
     #restaurar {
         width: 95px;
-        background-image: url("/clonezilla-riso/images/restauracao1.png");
+        background-image: url("/images/restauracao1.png");
         background-size:  90px 78px;
+        background-repeat: no-repeat;    
+    }
+
+    #pendriveBootavel {
+        width: 95px;
+        background-image: url("/images/pendrive.png");
+        background-size:  80px 58px;
+        background-repeat: no-repeat;    
+    }
+    #particionamento {
+        width: 95px;
+        background-image: url("/images/particionamento.png");
+        background-size:  90px 70px;
+        background-repeat: no-repeat;    
+    }
+    #recuperacao {
+        width: 95px;
+        background-image: url("/images/recuperacao.png");
+        background-size:  90px 70px;
         background-repeat: no-repeat;    
     }
 }
@@ -286,20 +322,38 @@ table ,td , tr , section{
 
     #formatacao {
         width: 75px;        
-        background-image: url("/clonezilla-riso/images/formata2.png");
+        background-image: url("/images/formata2.png");
         background-size:  70px 65px;
         background-repeat: no-repeat;    
     }
     #particionar {
         width: 85px;
-        background-image: url("/clonezilla-riso/images/particionar2.png");
+        background-image: url("/images/particionar2.png");
         background-size:  80px 61px;
         background-repeat: no-repeat;    
     }
     #restaurar {
         width: 85px;
-        background-image: url("/clonezilla-riso/images/restauracao1.png");
+        background-image: url("/images/restauracao1.png");
         background-size:  80px 68px;
+        background-repeat: no-repeat;    
+    }
+    #pendriveBootavel {
+        width: 95px;
+        background-image: url("/images/pendrive.png");
+        background-size:  70px 48px;
+        background-repeat: no-repeat;    
+    }
+    #particionamento {
+        width: 95px;
+        background-image: url("/images/particionamento.png");
+        background-size:  80px 70px;
+        background-repeat: no-repeat;    
+    }
+    #recuperacao {
+        width: 95px;
+        background-image: url("/images/recuperacao.png");
+        background-size:  80px 70px;
         background-repeat: no-repeat;    
     }
 }
@@ -307,7 +361,7 @@ table ,td , tr , section{
 @media screen and (max-width: 960px) {
     .postagem{        
         background-color: #030246; /*#97C8C4 #030246  030246;*/
-        background-image: url('/clonezilla-riso/images/fundo-azul3.jpg');
+        background-image: url('/images/fundo-azul3.jpg');
         background-repeat: no-repeat;
     }      
     .postagem{
@@ -322,30 +376,48 @@ table ,td , tr , section{
     }
     #formatacao {
         width: 75px;                
-        background-image: url("/clonezilla-riso/images/formata2.png");
+        background-image: url("/images/formata2.png");
         background-size:  70px 65px;
         background-repeat: no-repeat;    
     }
     #particionar {
         width: 85px;
-        background-image: url("/clonezilla-riso/images/particionar2.png");
+        background-image: url("/images/particionar2.png");
         background-size:  80px 61px;
         background-repeat: no-repeat;    
     }
     #restaurar {
         width: 85px;
-        background-image: url("/clonezilla-riso/images/restauracao1.png");
+        background-image: url("/images/restauracao1.png");
         background-size:  80px 68px;
         background-repeat: no-repeat;    
     }
 
+    #pendriveBootavel {
+        width: 95px;
+        background-image: url("/images/pendrive.png");
+        background-size:  70px 48px;
+        background-repeat: no-repeat;    
+    }
+    #particionamento {
+        width: 95px;
+        background-image: url("/images/particionamento.png");
+        background-size:  80px 70px;
+        background-repeat: no-repeat;    
+    }
+    #recuperacao {
+        width: 95px;
+        background-image: url("/images/recuperacao.png");
+        background-size:  80px 70px;
+        background-repeat: no-repeat;    
+    }
 }
 
 @media screen and (max-width: 400px) {
 
     .postagem{
         background-color: #030246; /*#97C8C4 #030246  030246;*/
-        background-image: url('/clonezilla-riso/images/fundo-azul3.jpg');
+        background-image: url('/images/fundo-azul3.jpg');
         background-repeat: no-repeat;
     }    
     .postagem{
@@ -367,26 +439,43 @@ table ,td , tr , section{
     }    
     #formatacao {
         width: 65px;                
-        background-image: url("/clonezilla-riso/images/formata2.png");
+        background-image: url("/images/formata2.png");
         background-size:  60px 55px;
         background-repeat: no-repeat;    
     }
     #particionar {
         width: 75px;
-        background-image: url("/clonezilla-riso/images/particionar2.png");
+        background-image: url("/images/particionar2.png");
         background-size:  70px 51px;
         background-repeat: no-repeat;    
     }
     #restaurar {
         width: 75px;
-        background-image: url("/clonezilla-riso/images/restauracao1.png");
+        background-image: url("/images/restauracao1.png");
         background-size:  70px 58px;
+        background-repeat: no-repeat;    
+    }
+    #pendriveBootavel {
+        width: 95px;
+        background-image: url("/images/pendrive.png");
+        background-size:  60px 48px;
+        background-repeat: no-repeat;    
+    }
+    #particionamento {
+        width: 95px;
+        background-image: url("/images/particionamento.png");
+        background-size:  70px 60px;
+        background-repeat: no-repeat;    
+    }
+    #recuperacao {
+        width: 95px;
+        background-image: url("/images/recuperacao.png");
+        background-size:  70px 60px;
         background-repeat: no-repeat;    
     }
 
 
 }
-
 
 @media screen and (max-width: 960px) {
     .colunas {
