@@ -11,9 +11,9 @@ seletor: PendriveBootavel
 
 - Para a criação de seu pendrive, é necessário que ele seja divido em duas partições. A primeira com pelo menos 300MB formatada como FAT16 ou FAT32, e a segunda formatada com EXT4. Você pode usar qualquer ferramenta de particionamento (por exemplo: gparted, parted, fdisk, cfdisk ou sfdisk). Para continuar é necessário saber o nome de sua unidade USB (exemplo: /dev/sdb1). Execute o comando: 
 
-``` 
-$ sudo fdisk -l
-``` 
+
+	$ sudo fdisk -l
+
 
 Assim será listado o nome de sua unidade flash.
 - Neste exemplo, assumimos que /dev/sdb1 tem sistema de arquivos FAT, e é automaticamente montado no dir /media/usb/. Se não for montado automaticamente, é preciso montá-lo manualmente com o comando:

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 		<head>
-		<title>Manual - CloneZilla-riso</title>
+		<title>Criar tabela de particionamento</title>
 		<link rel="icon" href="images/logoTitulo.png" type="image/x-icon" />
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -76,24 +76,56 @@
 				<!-- Intro -->
 					<section id="top" class="one dark cover">
 						<div id="conteudo" class="container">
-							<section class="manual tamanho paddingMobile">
-	<br>
-	<h3>Aprenda a cofigurar o <strong>CloneZilla-riso</strong>. Acesse os links abaixo para abrir o tutorial.</h3> <br>
+							<table id="tableManual">
+	<tr>
+		<td class="paddingMobile">
+			<section class="manual tamanho">
+			<h2 id="aplicar-nova-tabela-de-particionamento">Aplicar nova tabela de particionamento</h2>
 
-	<p>
-	<strong style="color: #FFCC00">Pendrive Bootável</strong> - <a href="/PendriveBootavel.html">Clique aqui</a> e aprenda a criar seu pendrive bootável do Clonezilla. <br>
+<p>A opção “Aplicar nova tabela de particionamento” lista as tabelas existentes em um diretório padrão salvo em uma variável global, o caminho do diretório é uma pasta da segunda partição do pendrive montado em /media. Depois de escolhida, é aplicado a tabela no disco selecionado pelo usuário. Se o programa nao encontrar tabelas ou discos, é apresentado uma mensagem de erro retornando ao menu principal. Se a tarefa for concluida com sucesso é exibido uma mensagem de êxito.</p>
 
-	<strong style="color: #FFCC00">Aplicar Tabela de Particionamento</strong> - <a href="/AplicarTabelaParticionamento.html">Clique aqui</a> e veja como aplicar uma tabela de particionamento  com  CloneZilla-riso. <br>
+<p><input type="hidden" id="selectMenuManual" value="#criarTabelaParticionamento" /></p>
 
-	<strong style="color: #FFCC00">Formatar Partições</strong> - <a href="/FormatarParticoes.html">Clique aqui</a> e veja como formatar partições com Clonezilla-riso.<br>
+			</section>
+		</td>
+		<td id="tdMenu" >
+						<!-- Nav -->
+			<div>
+			<nav id="navManual"> 
+			  <ul>
+			    
+			      <li>
+			        <a id="PendriveBootavel"  href="/PendriveBootavel"><span>Pendrive Bootavel</span></a>
+			      </li>
+			    
+			      <li>
+			        <a id="sistemaRecuperacao"  href="/InstalarSistemaRecuperacao"><span>Instalar Sistema de Recuperação</span></a>
+			      </li>
+			    
+			      <li>
+			        <a id="formatarParticoes"  href="/FormatarParticoes"><span>Formatar Partições</span></a>
+			      </li>
+			    
+			      <li>
+			        <a id="criarTabelaParticionamento"  href="/CriarTabelaParticionamento"><span>Criar tabela de particionamento</span></a>
+			      </li>
+			    
+			      <li>
+			        <a id="criarImagemSistemaRecuperacao"  href="/CriarImagemSistemaRecuperacao"><span>Criar Imagem do Sistema de Recuperação</span></a>
+			      </li>
+			    
+			      <li>
+			        <a id="aplicarTabelaParticionamento"  href="/AplicarTabelaParticionamento"><span>Aplicar tabela de particionamento</span></a>
+			      </li>
+			    
+			  </ul>			  
+			</nav>
+			</div>
+			<a href="#navManual"><div id="treeManual" ><span>&#9776;</span></div></a>
 
-	<strong style="color: #FFCC00">Instalar Sistema de Recuperação</strong> - <a href="/InstalarSistemaRecuperacao.html">Clique aqui</a> e veja como instalar o sistema de recuperação com CLonezilla-riso.<br>
-
-	<strong style="color: #FFCC00">Criar Tabela de Particionamento</strong> - <a href="/CriarTabelaParticionamento.html">Clique aqui</a> e veja comocriar uma tabela de particionamento com Clonezilla-riso.<br>
-
-	<strong style="color: #FFCC00">Criar imagem do Sistema de Recuperação</strong> - <a href="/CriarImagemSistemaRecuperacao.html">Clique aqui</a> e veja como criar uma imagem do sistema de recuperação com CLonezilla-riso.<br>
-
-</section>
+		</td>
+	</tr>
+</table>
 
 <input type='hidden' id='selectMenu' value='#manualMenu' />
 
