@@ -6,6 +6,6 @@ seletor: sistemaRecuperacao
 
 ##Instalar Sistema de Recuperação
 
-TEXTO
+![dos](images/MenuInstalarSistema.jpeg)
 
 <input type='hidden' id='selectMenuManual' value='#sistemaRecuperacao' />
