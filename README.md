@@ -61,7 +61,7 @@ $ mount /dev/sdb2 /home/partimag
 ```
 Assim, irá usar /dev/sdb2 como o dir trabalho.
 
-- Copie o script "clonezilla-riso.sh" para o diretorio criado "/home/partimag".Para a copia do arquivo (se estiver no HD) será preciso montar seu HD para ter acesso aos arquivos. Use o comando:
+- Copie o Script "custom-ocs" para o diretorio criado "/home/partimag".Para a copia do arquivo (se estiver no HD) será preciso montar seu HD para ter acesso aos arquivos. Use o comando:
 ```
 $ fdisk -l
 ```
@@ -72,11 +72,11 @@ $ mount /dev/sda1 /mnt
 ```
 Seu HD foi montado. Agora é preciso entrar no endereço "/mnt" e procurar a pasta onde seu script foi salvo. Dentro da pasta do script execute o comando para copia-lo para o diretorio criado anteriormente:
 ```
-$ cp custom-ocs /media/ubs
+$ cp custom-ocs /home/partimg
 ```
-- Primeiro copie o arquivo "custom-oc" para o diretorio /media/usb. Em seguida execute o seguinte comando que será gerado um arquivo zip modificado com adição de seu script "custom-ocs", e será salvo na segunda partição de seu pendrive.
+- Execute o seguinte comando pois será gerado um arquivo zip modificado com adição de seu script "custom-ocs", e será salvo na segunda partição de seu pendrive.
 ```
-$ cd /media/usb
+$ cd /home/partimg
 $ ocs-live-dev -g en_US.UTF-8 -k NONE -s -c -m ./custom-ocs
 ```
 Pode faltar alguns programas na maquina como: clonezilla ou gawk. Basta usar os seguintes comandos:
