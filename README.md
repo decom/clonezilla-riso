@@ -41,7 +41,7 @@ Agora poderá repetir o comando anterior, seguir as instruções e seu pendrive 
 
 Para o processo de adição de script é necessário que os passos de criação do pendrive bootavel com o Clonezilla seja concluido.
 
-- Será necessario baixar os arquivos do clonezilla-riso junto com a custon-ocs, e extrai-los com o comando:
+- Será necessario [baixar](https://github.com/decom/clonezilla-riso/archive/feature-ocs.zip) os arquivos do clonezilla-riso junto com a custon-ocs, e extrai-los com o comando:
 
 ```
 $ unzip clonezilla-riso-feature-ocs.zip
