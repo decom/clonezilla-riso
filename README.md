@@ -79,6 +79,12 @@ $ cp custom-ocs /home/partimag
 $ cd /home/partimag
 $ ocs-live-dev -g en_US.UTF-8 -k NONE -s -c -m ./custom-ocs
 ```
+Pode faltar alguns programas na maquina como: clonezilla ou gawk. Basta usar os seguintes comandos:
+```
+$ sudo apt-get install clonezilla
+$ sudo apt-get install gawk
+```
+
 - Agora é somente seguir o "Manual de criação do pendrive bootável do Clonezilla", substituindo o arquivo zip a ser baixado pelo novo zip gerado e salvo na segunda partição USB.
 
 - Agora copie a pasta clonezilla-riso para /home/partimag com o seguinte comando
