@@ -39,7 +39,13 @@ Agora poderá repetir o comando anterior, seguir as instruções e seu pendrive 
 
 ## Manual de criação do Clonezilla modificado com script do clonezilla-riso
 
-Para o processo de adição de script é necessário que os passos de criação do pendrive bootavel com o Clonezilla seja concluido. 
+Para o processo de adição de script é necessário que os passos de criação do pendrive bootavel com o Clonezilla seja concluido.
+
+- Será necessario baixar os arquivos do clonezilla-riso junto com a custon-ocs, e extrai-los com o comando:
+
+```
+$ unzip clonezilla-riso-feature-ocs.zip
+```
 
 - Crie seu script e certifique-se de que a primeira linha no seu script seja a shebang (#!/bin/bash) para evitar um problema de "erro de formato", vamos usar como exemplo o script "clonezilla-riso.sh".
 
@@ -50,7 +56,7 @@ $ sudo su
 
 - Monte a segunda partição do pendrive em algum diretorio de trabalho, como "/home/partimag". Você pode usar o comando: 
 ```
-$ mkdir -p /home/patimag
+$ mkdir -p /home/partimag
 $ mount /dev/sdb2 /home/partimag 
 ```
 Assim, irá usar /dev/sdb2 como o dir trabalho.
