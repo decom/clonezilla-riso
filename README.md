@@ -72,11 +72,10 @@ $ mount /dev/sda1 /mnt
 ```
 Seu HD foi montado. Agora é preciso entrar no endereço "/mnt" e procurar a pasta onde seu script foi salvo. Dentro da pasta do script execute o comando para copia-lo para o diretorio criado anteriormente:
 ```
-$ cp custom-ocs /home/partimag
+$ cp custom-ocs /media/ubs
 ```
 - Primeiro copie o arquivo "custom-oc" para o diretorio /media/usb. Em seguida execute o seguinte comando que será gerado um arquivo zip modificado com adição de seu script "custom-ocs", e será salvo na segunda partição de seu pendrive.
 ```
-$ cp /local_do_arquivo/custom-ocs /media/usb
 $ cd /media/usb
 $ ocs-live-dev -g en_US.UTF-8 -k NONE -s -c -m ./custom-ocs
 ```
