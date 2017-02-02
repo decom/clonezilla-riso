@@ -74,9 +74,10 @@ Seu HD foi montado. Agora é preciso entrar no endereço "/mnt" e procurar a pas
 ```
 $ cp custom-ocs /home/partimag
 ```
-- Execute o seguinte comando e será gerado um arquivo zip modificado com adição de seu script "custom-ocs", e será salvo na segunda partição de seu pendrive.
+- Primeiro copie o arquivo "custom-oc" para o diretorio /media/usb. Em seguida execute o seguinte comando que será gerado um arquivo zip modificado com adição de seu script "custom-ocs", e será salvo na segunda partição de seu pendrive.
 ```
-$ cd /home/partimag
+$ cp /local_do_arquivo/custom-ocs /media/usb
+$ cd /media/usb
 $ ocs-live-dev -g en_US.UTF-8 -k NONE -s -c -m ./custom-ocs
 ```
 Pode faltar alguns programas na maquina como: clonezilla ou gawk. Basta usar os seguintes comandos:
