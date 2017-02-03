@@ -75,11 +75,11 @@ $ mount /dev/sda1 /mnt
 ```
 Seu HD foi montado. Agora é preciso entrar no endereço "/mnt" e procurar a pasta onde seu script foi salvo. Dentro da pasta do script execute o comando para copia-lo para o diretorio criado anteriormente:
 ```
-$ cp custom-ocs /home/partimg
+$ cp custom-ocs /home/partimag
 ```
 - Execute o seguinte comando pois será gerado um arquivo zip modificado com adição de seu script "custom-ocs", e será salvo na segunda partição de seu pendrive.
 ```
-$ cd /home/partimg
+$ cd /home/partimag
 # Este comoando tem que ser executado necessariamente no terminal do clonezilla
 $ ocs-live-dev -g en_US.UTF-8 -k NONE -s -c -m ./custom-ocs
 ```
