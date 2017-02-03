@@ -13,6 +13,7 @@ Assim será listado o nome de sua unidade flash.
 ```
 $ mkdir -p /media/usb 
 $ mount /dev/sdb1 /media/usb/
+$ mount -o remount,rw /dev/sdb1
 ```
 - Descompacte o arquivo zip do Clonezilla em sua unidade USB. Você pode fazer isso com o comando:
  
@@ -40,6 +41,7 @@ Agora poderá repetir o comando anterior, seguir as instruções e seu pendrive 
 ## Manual de criação do Clonezilla modificado com script do clonezilla-riso
 
 Para o processo de adição de script é necessário que os passos de criação do pendrive bootavel com o Clonezilla seja concluido.
+E seja executado no terminal do Clonezilla
 
 - Será necessario [baixar](https://github.com/decom/clonezilla-riso/archive/feature-ocs.zip) os arquivos do clonezilla-riso junto com a custon-ocs, e extrai-los com o comando:
 
@@ -57,7 +59,8 @@ $ sudo su
 - Monte a segunda partição do pendrive em algum diretorio de trabalho, como "/home/partimag". Você pode usar o comando: 
 ```
 $ mkdir -p /home/partimag
-$ mount /dev/sdb2 /home/partimag 
+$ mount /dev/sdb2 /home/partimag
+$ mount -o remount,rw /dev/sdb2
 ```
 Assim, irá usar /dev/sdb2 como o dir trabalho.
 
@@ -79,12 +82,6 @@ $ cp custom-ocs /home/partimg
 $ cd /home/partimg
 $ ocs-live-dev -g en_US.UTF-8 -k NONE -s -c -m ./custom-ocs
 ```
-Pode faltar alguns programas na maquina como: clonezilla ou gawk. Basta usar os seguintes comandos:
-```
-$ sudo apt-get install clonezilla
-$ sudo apt-get install gawk
-```
-
 - Agora é somente seguir o "Manual de criação do pendrive bootável do Clonezilla", substituindo o arquivo zip a ser baixado pelo novo zip gerado e salvo na segunda partição USB.
 
 - Agora copie a pasta clonezilla-riso para /home/partimag com o seguinte comando
