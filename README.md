@@ -41,7 +41,7 @@ Agora poderá repetir o comando anterior, seguir as instruções e seu pendrive 
 ## Manual de criação do Clonezilla modificado com script do clonezilla-riso
 
 Para o processo de adição de script é necessário que os passos de criação do pendrive bootavel com o Clonezilla seja concluido.
-E seja executado no terminal do Clonezilla
+E sera necessario executar um comando no terminal do Clonezilla
 
 - Será necessario [baixar](https://github.com/decom/clonezilla-riso/archive/feature-ocs.zip) os arquivos do clonezilla-riso junto com a custon-ocs, e extrai-los com o comando:
 
@@ -80,7 +80,7 @@ $ cp custom-ocs /home/partimg
 - Execute o seguinte comando pois será gerado um arquivo zip modificado com adição de seu script "custom-ocs", e será salvo na segunda partição de seu pendrive.
 ```
 $ cd /home/partimg
-$ ocs-live-dev -g en_US.UTF-8 -k NONE -s -c -m ./custom-ocs
+$ ocs-live-dev -g en_US.UTF-8 -k NONE -s -c -m ./custom-ocs //(este comoando tem que ser executado necessariamente no terminal do clonezilla)
 ```
 - Agora é somente seguir o "Manual de criação do pendrive bootável do Clonezilla", substituindo o arquivo zip a ser baixado pelo novo zip gerado e salvo na segunda partição USB.
 
