@@ -81,7 +81,7 @@ $ cp custom-ocs /home/partimg
 ```
 $ cd /home/partimg
 # Este comoando tem que ser executado necessariamente no terminal do clonezilla
-$ ocs-live-dev -g en_US.UTF-8 -k NONE -s -c -m ./custom-ocs //(este comoando tem que ser executado necessariamente no terminal do clonezilla)
+$ ocs-live-dev -g en_US.UTF-8 -k NONE -s -c -m ./custom-ocs
 ```
 - Agora é somente seguir o "Manual de criação do pendrive bootável do Clonezilla", substituindo o arquivo zip a ser baixado pelo novo zip gerado e salvo na segunda partição USB.
 
