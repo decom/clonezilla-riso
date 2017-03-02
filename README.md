@@ -13,7 +13,6 @@ Assim será listado o nome de sua unidade flash.
 ```
 $ mkdir -p /media/usb 
 $ mount /dev/sdb1 /media/usb/
-$ mount -o remount,rw /dev/sdb1
 ```
 - Descompacte o arquivo zip do Clonezilla em sua unidade USB. Você pode fazer isso com o comando:
  
@@ -60,7 +59,6 @@ $ sudo su
 ```
 $ mkdir -p /home/partimag
 $ mount /dev/sdb2 /home/partimag
-$ mount -o remount,rw /dev/sdb2
 ```
 Assim, irá usar /dev/sdb2 como o dir trabalho.
 
