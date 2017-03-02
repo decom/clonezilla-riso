@@ -64,7 +64,7 @@ $ mount -o remount,rw /dev/sdb2
 ```
 Assim, irá usar /dev/sdb2 como o dir trabalho.
 
-- Copie o Script "custom-ocs" para o diretorio criado "/home/partimag".Para a copia do arquivo (se estiver no HD) será preciso montar seu HD para ter acesso aos arquivos. Use o comando:
+- Copie o Script "custom-ocs" que está dentro da pasta baixada "clonezilla-riso-feature-ocs" para o diretorio criado "/home/partimag".Para a copia do arquivo (se estiver no HD) será preciso montar seu HD para ter acesso aos arquivos. Use o comando:
 ```
 $ fdisk -l
 ```
@@ -83,9 +83,10 @@ $ cd /home/partimag
 # Este comoando tem que ser executado necessariamente no terminal do clonezilla
 $ ocs-live-dev -g en_US.UTF-8 -k NONE -s -c -m ./custom-ocs
 ```
+- Agora acesse a pasta "clonezilla-riso-feature-ocs" no seu HD e copie a pasta clonezilla-riso que contem os scripts para /home/partimag com o seguinte comando
+```
+$ cp clonezilla-riso/* /home/partimag
+```
 - Agora é somente seguir o "Manual de criação do pendrive bootável do Clonezilla", substituindo o arquivo zip a ser baixado pelo novo zip gerado e salvo na segunda partição USB.
 
-- Agora copie a pasta clonezilla-riso para /home/partimag com o seguinte comando
-```
-$ cp clonezilla-riso/clonezilla-riso/* /home/partimag
-```
+
