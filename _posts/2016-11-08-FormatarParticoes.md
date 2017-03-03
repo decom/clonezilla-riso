@@ -4,7 +4,7 @@ title: Formatar Partições
 seletor: formatarParticoes
 ---
 
-##Formatar Partições
+## Formatar Partições
 
 ![dos](images/MenuFormatar.jpeg)
 

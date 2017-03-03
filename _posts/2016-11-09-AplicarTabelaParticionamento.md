@@ -4,7 +4,7 @@ title: Aplicar tabela de particionamento
 seletor: aplicarTabelaParticionamento
 ---
 
-##Aplicar nova tabela de particionamento
+## Aplicar nova tabela de particionamento
 
 ![dos](images/MenuAplicar.jpeg)
 

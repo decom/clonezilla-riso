@@ -4,7 +4,7 @@ title: Criar tabela de particionamento
 seletor: criarTabelaParticionamento
 ---
 
-##Aplicar nova tabela de particionamento
+## Aplicar nova tabela de particionamento
 
 ![dos](images/MenuCriarTabela.jpeg)
 
