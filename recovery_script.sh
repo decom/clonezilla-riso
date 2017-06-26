@@ -6,9 +6,9 @@ if [ $# -ne 2 ]; then
    exit 1;
 fi
 
-#Definir variáveis DEVICE e PARTITION a partir dos parâmetros de execução.
+#Definir variáveis DEVICE e TABLE a partir dos parâmetros de execução.
 DEVICE=$1
-PARTITION=$2
+TABLE=$2
 
 #Definir partições para o padrão utilizado no riso (Partição 1 - Recovery, Partição 5 - Dados, Partição 6 - SWAP)
 RECOVERY=$DEVICE"1"
@@ -19,7 +19,7 @@ SWAP=$DEVICE"6"
 dd if=/dev/zero of=$DEVICE bs=512 count=2048
 
 #Aplicar tabela de particionamento ao disco
-sfdisk $DEVICE < $HD
+sfdisk $DEVICE < $TABLE
 
 #Formatar partição recovery, trocando UUID
 mkfs.ext4 -Fq -O ^metadata_csum -U `cut -d '"' -f2 recoveryUUID` $RECOVERY
