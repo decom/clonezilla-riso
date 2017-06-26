@@ -1,42 +1,24 @@
 #!/bin/bash
 
-#Primeira Opção - /dev/sda or /dev/sdb (device)
+#Verificar parâmetros disco (ex:/dev/sda) e arquivo de particionamento (ex: HD500)
+if [ $# -ne 2 ]; then
+   echo "Usage: $0 [Disk] [Partition Table File]";
+   exit 1;
+fi
 
+#Definir variáveis DEVICE e TABLE a partir dos parâmetros de execução.
 DEVICE=$1
-HD=$2
+TABLE=$2
 
-RECOVERY=$DEVICE"1"
+#Definir partições para o padrão utilizado no riso (Partição 5 - Dados, Partição 6 - SWAP)
 DADOS=$DEVICE"5"
 SWAP=$DEVICE"6"
 
-FILES="FILES"
+#Aplicar tabela de particionamento ao disco
+sfdisk $DEVICE < $TABLE
 
-#dd if=/dev/zero of=$DEVICE bs=512 count=2048
-sfdisk $DEVICE < $HD
-
-#formatar recovery, trocando UUID
-#mkfs.ext4 -Fq -O ^metadata_csum -U `cut -d '"' -f2 recoveryUUID` $RECOVERY
-#formatar swap, trocando UUID
+#Formatar partição swap, trocando UUID
 mkswap -U `cut -d '"' -f2 swapUUID` $SWAP
-#formatar Dados
+
+#Formatar partição Dados
 mkfs.ntfs -f -Fq -L Dados $DADOS
-
-
-#mount $RECOVERY /mnt
-
-#echo "Restaurando partição..."
-#tar -xf recovery.tar -C /mnt
-#echo "Partição restaurada."
-
-#rm -Rf lost+found/
-
-#cp -R $FILES/* /mnt
-
-#grub-install --boot-directory=/mnt/boot $DEVICE
-
-#mount --bind /dev /mnt/dev
-#mount --bind /sys /mnt/sys
-#mount --bind /proc /mnt/proc
-
-#chroot /mnt "update-grub"
-
