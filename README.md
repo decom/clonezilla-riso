@@ -2,7 +2,7 @@
 
 O Clonezilla-RISO contém scripts de apoio à implantação do Sistema RISO em máquinas não configuradas.
 
-Para maiores detalhes de utilização, consulte a wiki do DECOM ou entre em contato com o Suporte Técnico do Departamento de Computação do Centeo Federal de Educação Tecnológica de Minas Gerais.
+Para maiores detalhes de utilização, consulte a wiki do DECOM ou entre em contato com o Suporte Técnico do Departamento de Computação do Centro Federal de Educação Tecnológica de Minas Gerais.
 
 ## Informaçes sobre os arquivos de particonamento
 
