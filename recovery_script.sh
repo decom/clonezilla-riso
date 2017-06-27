@@ -33,7 +33,7 @@ mkfs.ntfs -f -Fq -L Dados $DADOS
 #Restaurar partição recovery a partido do arquivo recovey.tar
 mount $RECOVERY /mnt
 echo "Restaurando partição..."
-tar -xf recovery.tar -C /mnt
+tar -jxf recovery.tar.bz2 -C /mnt
 echo "Partição restaurada."
 
 #Instalar grub na partição recovery
