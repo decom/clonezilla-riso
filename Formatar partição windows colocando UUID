@@ -1,0 +1,12 @@
+DIRNAME=`dirname $0`
+DEVICE=$1
+
+WINDOWS=$DEVICE"2"
+
+source $DIRNAME/riso.cfg
+
+# Formata a partição windows, trocando a UUID.
+mkfs.${sa_partwindows} -f -Fq  $WINDOWS
+u=${partwindows^^}
+echo ${u:14:2}${u:12:2}${u:10:2}${u:8:2}${u:6:2}${u:4:2}${u:2:2}${u:0:2}| xxd -r -p | dd of=$WINDOWS bs=8 count=1 seek=9
+
