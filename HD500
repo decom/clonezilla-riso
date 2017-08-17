@@ -1,0 +1,11 @@
+label: dos
+label-id: 0xdd4ec51c
+device: /dev/sda
+unit: sectors
+
+/dev/sda1 : start=        2048, size=   312569176, type=83, bootable
+/dev/sda2 : start=   312571904, size=   234445544, type=7
+/dev/sda3 : start=   547018752, size=   125829120, type=83
+/dev/sda4 : start=   672847872, size=   299892736, type=5
+/dev/sda5 : start=   672849920, size=   291504128, type=7
+/dev/sda6 : start=   964356096, size=     8384512, type=82
