@@ -5,7 +5,7 @@
 
 # Verifica os parâmetros do disco (ex:/dev/sda) e o arquivo de particionamento (ex: HD500)
 
-if [ $# -ne 2 ]; then
+if [ $# -ne 1 ]; then
    echo "Utilização: $0 [Disco]";
    exit 1;
 fi
