@@ -53,10 +53,6 @@ atualizar_recovery() {
     echo "Instalando e atualizando o GRUB..."
     #Instala o grub na partição montada no diretório /mnt
 
-    mkdir -p /mnt/boot/efi
-
-    mount $EFI /mnt/boot/efi
-
     for i in /sys /proc /dev; do mount --bind $i /mnt$i; done
 
     chroot /mnt grub-install $DEVICE
@@ -65,9 +61,8 @@ atualizar_recovery() {
 
     for i in /sys /proc /dev; do umount /mnt$i; done
 
-    umount $EFI
-
     umount $RECOVERY
+    
     echo "GRUB instalado e atualizado com sucesso..."
 
     echo ""
@@ -210,10 +205,6 @@ instalar_UUID() {
     carregar_variaveis;
     echo "Atribuindo a UUID nas partições."
 
-    # Atribuindo a UUID na partição EFI
-
-
-
     # Atribuindo a UUID a partição recovery
 
     tune2fs -U ${partrecovery,,} $RECOVERY
@@ -250,8 +241,6 @@ instalar_UUID() {
 
     mount $RECOVERY /mnt
     
-    mount $EFI /mnt/boot/efi
-    
     for i in /sys /proc /dev; do mount --bind $i /mnt$i; done
 
     echo "Partições montadas com sucesso."
@@ -275,8 +264,6 @@ instalar_UUID() {
     # Desmonta as partições montadas no diretório /mnt
     
     for i in /sys /proc /dev; do umount /mnt$i; done
-    
-    umount $EFI
     
     umount $RECOVERY
 
@@ -352,12 +339,6 @@ instalar_recovery(){
 
     #Instala o grub na partição montada no diretório /mnt
 
-    mkdir -p /mnt/boot/efi
-
-    mount $EFI /mnt/boot/efi
-
-    #alterando para uma forma mais inteligente de montar as pastas
-
     for i in /sys /proc /dev; do mount --bind $i /mnt$i; done
 
     chroot /mnt grub-install $DEVICE
@@ -367,8 +348,6 @@ instalar_recovery(){
     #alterando para uma forma mais inteligente de desmontar as pastas
 
     for i in /sys /proc /dev; do umount /mnt$i; done
-
-    umount $EFI
 
     umount $RECOVERY
 
